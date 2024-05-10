@@ -28,6 +28,7 @@ jobs:
     
     - name: Run tests with coverage
       run: |
+        uvicorn main1:app
         coverage run -m pytest
         coverage xml -o coverage.xml
 
