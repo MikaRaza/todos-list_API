@@ -17,4 +17,12 @@ async def create_todo(todo: TodoCreate):
     doc_ref.set(todo.dict())
     return {"id": doc_ref.id, **todo.dict()}
 
-
+@router.get("/todos/{todo_id}")
+async def read_todo(todo_id: str):
+    db = get_firestore_client()
+    todo_ref = db.collection(u'todos').document(todo_id)
+    todo = todo_ref.get()
+    if todo.exists:
+        return todo.to_dict()
+    else:
+        raise HTTPException(status_code=404, detail="Todo not found")
