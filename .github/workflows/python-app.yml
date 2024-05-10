@@ -24,7 +24,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Test connection to local server
-      run: curl http://localhost:8000
+      run: curl http://127.0.0.1:8000
     
     - name: Run tests with coverage
       run: |
