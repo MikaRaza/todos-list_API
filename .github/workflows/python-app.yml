@@ -23,6 +23,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Test connection to local server
+      run: curl http://localhost:8000
+    
     - name: Run tests with coverage
       run: |
         coverage run -m pytest
